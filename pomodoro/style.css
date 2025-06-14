@@ -1,0 +1,101 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #81e069;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Container */
+.container {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Timer Display */
+.timer-display {
+  font-size: 64px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Buttons */
+.buttons button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#start {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#pause {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+#reset {
+  background-color: #d9534f;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.85;
+}
+
+/* Right-aligned button container */
+.right-buttons {
+  position: absolute;
+  right: 10px;  /* Place buttons 10px from the right edge */
+  top: 20px;    /* Place them 20px from the top */
+}
+
+.right-buttons button {
+  display: block;
+  margin-bottom: 10px; /* Space out buttons vertically */
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Styling for the new buttons */
+#btn1 {
+  background-color: #007bff;
+  color: white;
+}
+
+#btn2 {
+  background-color: #28a745;
+  color: white;
+}
+
+#btn3 {
+  background-color: #ffc107;
+  color: white;
+}
+
+/* Hover effects for new buttons */
+.right-buttons button:hover {
+  opacity: 0.85;
+}
