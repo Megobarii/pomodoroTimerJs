@@ -5,6 +5,15 @@ const setTimeButton = document.getElementById('setTime');
 const studySessionsNumber = document.getElementById('studySessions');
 const relaxSessionsNumber = document.getElementById('relaxSessions');
 
+const session1 = document.getElementById('session1');
+const session2 = document.getElementById('session2');
+const session3 = document.getElementById('session3');
+const session4 = document.getElementById('session4');
+const session5 = document.getElementById('session5');
+const session6 = document.getElementById('session6');
+const session7 = document.getElementById('session7');
+const session8 = document.getElementById('session8');
+
 let stopped = true; // When the page is first opened, the timer is stopped
 let isStudying = true; // Start with study mode
 let originalTime = 1500; // Default 25 minutes in seconds
@@ -20,6 +29,23 @@ function finishedSession() {
         isStudying = false; // Switch to relax mode
         studySessions++;
         studySessionsNumber.textContent = studySessions;
+        if (studySessions == 1) {
+            session1.textContent = "X";
+        } else if (studySessions == 2) {
+            session2.textContent = "X";
+        } else if (studySessions == 3) {
+            session3.textContent = "X";
+        } else if (studySessions == 4) {
+            session4.textContent = "X";
+        } else if (studySessions == 5) {
+            session5.textContent = "X";
+        } else if (studySessions == 6) {
+            session6.textContent = "X";
+        } else if (studySessions == 7) {
+            session7.textContent = "X";
+        } else if (studySessions == 8) {
+            session8.textContent = "X";
+        }
         runRelaxTimer(); // Start relaxation
     } else {
         isStudying = true; // Switch to study mode
