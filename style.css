@@ -1,3 +1,22 @@
+/* Session Tracker */
+.session-tracker {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align to the left side of the container */
+  margin-bottom: 20px; /* Space between session tracker and the timer */
+}
+
+.session-tracker label {
+  font-size: 15px;
+  margin: 5px; /* Space between checkboxes */
+  padding-left: 5px
+}
+
+.session-tracker input[type="checkbox"] {
+  transform: scale(1); /* Make checkboxes a little bigger */
+  margin-right: 10px;
+}
+
 /* Reset & Base */
 * {
   margin: 0;
