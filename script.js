@@ -106,6 +106,7 @@ function pauseTimer() {
     }
 }*/
 
+/*shouldn't need this one either anymore
 function resetTimer() {
     timeLeft = originalTime; // Reset to original time
     relaxTime = 300; // Reset relaxation time to 5 minutes
@@ -113,7 +114,7 @@ function resetTimer() {
     if (!stopped) {
         pauseTimer(); // Pause the timer if running
     }
-}
+}*/
 
 function setTime() {
     const userTime = prompt("Please input your study time in minutes: ");
@@ -134,6 +135,12 @@ function setTime() {
     } else {
         alert("Invalid input! Please enter a valid number.");
     }
+
+    clearInterval(timerInterval);//pause timer
+    timerDisplay.textContent = formatTime(timeLeft);
+    isStudying = false; //upon restarting, start from studying not from resting
+    startButton.textContent = "Start";//change button to "Start"
+    
 }
 
 /*shouldn't need this, shoudl run startTimer() directly when clicking "start" button
