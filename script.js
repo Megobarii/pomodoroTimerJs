@@ -95,6 +95,7 @@ function startTimer() {
         clearInterval(timerInterval);//pause timer
         stopped = true; //mark as stopped
         startButton.textContent = "Start";//change button to "Start"
+    }
 }
 
 /*shouldn't need this function anymore after including it in startTimer()
