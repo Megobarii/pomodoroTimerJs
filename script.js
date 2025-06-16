@@ -17,6 +17,7 @@ const session8 = document.getElementById('session8');
 let stopped = true; // When the page is first opened, the timer is stopped
 let isStudying = true; // Start with study mode
 let originalTime = 1500; // Default 25 minutes in seconds
+//i'm not sure i need both orignalTime and timeLeft, idk what i was thinking when i did this, will check it when i have time
 let timeLeft = originalTime;
 let relaxTime = 300; // Default relax time (5 minutes)
 let timerInterval;
@@ -67,7 +68,6 @@ function runRelaxTimer() {
     if (relaxTime < 0) {
         clearInterval(timerInterval);
         alert('Get back to study!');
-        pauseTimer();
         finishedSession(); // After relaxation, switch to study
     }
 }
@@ -91,16 +91,20 @@ function startTimer() {
         }
         stopped = false; // Mark the timer as running
         startButton.textContent = "Pause"; // Change button text to "Pause"
-    }
+    } else {
+        clearInterval(timerInterval);//pause timer
+        stopped = true; //mark as stopped
+        startButton.textContent = "Start";//change button to "Start"
 }
 
+/*shouldn't need this function anymore after including it in startTimer()
 function pauseTimer() {
     if (!stopped) {
         clearInterval(timerInterval); // Pause the timer
         stopped = true; // Mark the timer as stopped
         startButton.textContent = "Start"; // Change button text to "Start"
     }
-}
+}*/
 
 function resetTimer() {
     timeLeft = originalTime; // Reset to original time
@@ -112,8 +116,8 @@ function resetTimer() {
 }
 
 function setTime() {
-    const userTime = prompt("Please input your time in minutes: ");
-    const minutes = parseInt(userTime);
+    const userTime = prompt("Please input your study time in minutes: ");
+    let minutes = parseInt(userTime);
     if (!isNaN(minutes) && minutes > 0) {
         originalTime = minutes * 60;
         timeLeft = originalTime; // Update time left with the new time
@@ -121,16 +125,26 @@ function setTime() {
     } else {
         alert("Invalid input! Please enter a valid number.");
     }
+
+    const userRelaxTime = prompt("Please input your relax time in minutes: ");
+    minutes = parseInt(userRelaxTime);
+    if(!isNaN(minutes) && minutes > 0){
+        relaxTime = minutes * 60;
+        resetTimer();
+    } else {
+        alert("Invalid input! Please enter a valid number.");
+    }
 }
 
+/*shouldn't need this, shoudl run startTimer() directly when clicking "start" button
 function decideContext() {
     if (stopped) {
         startTimer();
     } else {
         pauseTimer();
     }
-}
+}*/
 
-startButton.addEventListener('click', decideContext);
+startButton.addEventListener('click', startTimer);//this was decideContext function call
 resetButton.addEventListener('click', resetTimer);
 setTimeButton.addEventListener('click', setTime);
