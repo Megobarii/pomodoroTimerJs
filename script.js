@@ -122,7 +122,6 @@ function setTime() {
     if (!isNaN(minutes) && minutes > 0) {
         originalTime = minutes * 60;
         timeLeft = originalTime; // Update time left with the new time
-        resetTimer();
     } else {
         alert("Invalid input! Please enter a valid number.");
     }
@@ -131,7 +130,6 @@ function setTime() {
     minutes = parseInt(userRelaxTime);
     if(!isNaN(minutes) && minutes > 0){
         relaxTime = minutes * 60;
-        resetTimer();
     } else {
         alert("Invalid input! Please enter a valid number.");
     }
