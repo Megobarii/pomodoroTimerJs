@@ -49,13 +49,17 @@ function finishedSession() {
         } else if (studySessions == 8) {
             session8.textContent = "X";
         }
-        runRelaxTimer(); // Start relaxation
+        relaxTime = originalRelaxTime; //reset relax time
     } else {
         isStudying = true; // Switch to study mode
         relaxSessions++;
         relaxSessionsNumber.textContent = relaxSessions;
-        runStudyTimer(); // Start study session
+        
+        timeLeft = originalTime; //reset study time
     }
+
+    stopped = true;
+    startTimer(); //start the next timer (study or relax on context)
 }
 
 function formatTime(seconds) {
@@ -113,6 +117,7 @@ function resetTimer() {
     timeLeft = originalTime; // Reset to original time
     relaxTime = originalRelaxTime; // Reset relaxation time to 5 minutes
     timerDisplay.textContent = formatTime(timeLeft);
+    isStudying = true; //restart from studying mode
     if (!stopped) {
         clearInterval(timerInterval);//pause timer
         stopped = true;//mark as stopped
@@ -141,7 +146,7 @@ function setTime() {
 
     clearInterval(timerInterval);//pause timer
     timerDisplay.textContent = formatTime(timeLeft);
-    isStudying = false; //upon restarting, start from studying not from resting
+    isStudying = true; //upon restarting, start from studying not from resting
     startButton.textContent = "Start";//change button to "Start"
     
 }
