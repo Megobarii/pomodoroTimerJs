@@ -18,8 +18,10 @@ let stopped = true; // When the page is first opened, the timer is stopped
 let isStudying = true; // Start with study mode
 let originalTime = 1500; // Default 25 minutes in seconds
 //i'm not sure i need both orignalTime and timeLeft, idk what i was thinking when i did this, will check it when i have time
+//yes i needed it in reset timer, i also need one for relax time
 let timeLeft = originalTime;
-let relaxTime = 300; // Default relax time (5 minutes)
+let originalRelaxTime = 300;
+let relaxTime = originalRelaxTime; // Default relax time (5 minutes)
 let timerInterval;
 
 let studySessions = 0;
@@ -107,15 +109,16 @@ function pauseTimer() {
     }
 }*/
 
-/*shouldn't need this one either anymore
 function resetTimer() {
     timeLeft = originalTime; // Reset to original time
-    relaxTime = 300; // Reset relaxation time to 5 minutes
+    relaxTime = originalRelaxTime; // Reset relaxation time to 5 minutes
     timerDisplay.textContent = formatTime(timeLeft);
     if (!stopped) {
-        pauseTimer(); // Pause the timer if running
+        clearInterval(timerInterval);//pause timer
+        stopped = true;//mark as stopped
+        startButton.textContent = "Start";//change button text to "start"
     }
-}*/
+}
 
 function setTime() {
     const userTime = prompt("Please input your study time in minutes: ");
@@ -130,7 +133,8 @@ function setTime() {
     const userRelaxTime = prompt("Please input your relax time in minutes: ");
     minutes = parseInt(userRelaxTime);
     if(!isNaN(minutes) && minutes > 0){
-        relaxTime = minutes * 60;
+        originalRelaxTime = minutes * 60;
+        relaxTime = originalRelaxTime;
     } else {
         alert("Invalid input! Please enter a valid number.");
     }
